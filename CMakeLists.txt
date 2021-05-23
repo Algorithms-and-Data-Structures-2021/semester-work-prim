@@ -50,5 +50,5 @@ add_subdirectory(examples)
 add_subdirectory(benchmark)
 
 # === main (target) ===
-add_executable(main prim_algorithm.cpp)
+add_executable(main main.cpp)
 target_link_libraries(main PRIVATE project_warnings ${PROJECT_NAME})
