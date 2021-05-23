@@ -25,25 +25,6 @@ void Heap :: addelem(int n) {
   HeapSize++;
 }
 
-void Heap:: outHeap(void) {
-  int i = 0;
-  int k = 1;
-  while(i < HeapSize) {
-    while((i < k) && (i < HeapSize)) {
-      cout << h[i] << " ";
-      i++;
-    }
-    cout << endl;
-    k = k * 2 + 1;
-  }
-}
-
-void Heap:: out(void) {
-  for(int i=0; i< HeapSize; i++) {
-    cout << h[i] << " "; }
-  cout << endl;
-}
-
 void Heap:: heapify(int i) {
   int left, right;
   int temp;
@@ -67,8 +48,12 @@ void Heap:: heapify(int i) {
   }
 }
 
+Heap::~Heap() {
+  h = 0;
+  HeapSize = 0;
+}
+
 InitGraph::InitGraph(int V) {
-  // здесь должны быть определения методов вашей структуры
   parent = new int[V];
 
   for (int i = 0; i < V; i++)
@@ -98,13 +83,22 @@ Heap InitGraph::prim() {
     uRep = findVertex(G[i].second.first);
     vRep = findVertex(G[i].second.second);
     if (uRep != vRep) {
-      heap.addelem(uRep);
-      heap.addelem(vRep);
+     heap.addelem(uRep);
+     heap.addelem(vRep);
       T.push_back(G[i]);
       unite(uRep, vRep);
-      heap.heapify(uRep);
-      heap.heapify(vRep);
+     heap.heapify(uRep);
+     heap.heapify(vRep);
     }
   }
   return heap;
 }
+
+
+
+
+
+
+
+
+
